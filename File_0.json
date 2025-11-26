@@ -1,21 +1,10 @@
 [ {
   "CORREO" : "ejhonnatan@hotmail.com",
-  "LINK" : "https://informes-opinat.netlify.app/?correo=ejhonnatan@hotmail.com",
   "PDF_SplitResultList" : [ "https://drive.google.com/open?id=1Ql1rxKXH1EIGFTCzsv4e0hYcMAflCi16&usp=drive_fs" ]
 }, {
   "CORREO" : "ejhonnatan@gmail.com",
-  "LINK" : "https://informes-opinat.netlify.app/?correo=ejhonnatan@gmail.com",
   "PDF_SplitResultList" : [ "https://drive.google.com/open?id=12OXGIqWbdhBYk0GEYO0sIw1aCc0CfKSP&usp=drive_fs" ]
 }, {
   "CORREO" : "jecheverri@opinat.com",
-  "LINK" : "https://informes-opinat.netlify.app/?correo=jecheverri@opinat.com",
-  "PDF_SplitResultList" : [ "https://drive.google.com/open?id=12OXGIqWbdhBYk0GEYO0sIw1aCc0CfKSP&usp=drive_fs", "https://drive.google.com/open?id=12OXGIqWbdhBYk0GEYO0sIw1aCc0CfKSP&usp=drive_fs", "https://drive.google.com/open?id=15AnYS0AxV6S-Zoac3csISfs6L_lEtUDO&usp=drive_fs" ]
-}, {
-  "CORREO" : "sraventos@opinat.com",
-  "LINK" : "https://informes-opinat.netlify.app/?correo=sraventos@opinat.com",
-  "PDF_SplitResultList" : [ "https://drive.google.com/open?id=12OXGIqWbdhBYk0GEYO0sIw1aCc0CfKSP&usp=drive_fs" ]
-}, {
-  "CORREO" : "javion@opinat.com",
-  "LINK" : "https://informes-opinat.netlify.app/?correo=javion@opinat.com",
-  "PDF_SplitResultList" : [ "https://drive.google.com/open?id=12OXGIqWbdhBYk0GEYO0sIw1aCc0CfKSP&usp=drive_fs", "https://drive.google.com/open?id=1Ql1rxKXH1EIGFTCzsv4e0hYcMAflCi16&usp=drive_fs" ]
+  "PDF_SplitResultList" : [ "https://drive.google.com/open?id=12OXGIqWbdhBYk0GEYO0sIw1aCc0CfKSP&usp=drive_fs", "https://drive.google.com/open?id=12OXGIqWbdhBYk0GEYO0sIw1aCc0CfKSP&usp=drive_fs" ]
 } ]
