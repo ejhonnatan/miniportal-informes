@@ -1,38 +1,25 @@
-function getCorreoFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('correo') ? params.get('correo').trim().toLowerCase() : null;
-}
+// Obtén el parámetro de correo de la URL
+const params = new URLSearchParams(window.location.search);
+const correo = params.get('correo');
 
+// Carga el JSON
 fetch('File_0.json')
-  .then(resp => resp.json())
-  .then(data => mostrarInformes(data))
-  .catch(() => {
-    document.getElementById('resultados').innerHTML = "<p>Error cargando datos.</p>";
-  });
+  .then(response => response.json())
+  .then(data => {
+    // Busca el usuario por correo
+    const usuario = data.find(u => u.CORREO === correo);
 
-function mostrarInformes(permisos) {
-  const correo = getCorreoFromURL();
-  let html = "";
-
-  if (!correo) {
-    html = "<p>Error: Debes acceder desde el enlace del correo.</p>";
-    document.getElementById('resultados').innerHTML = html;
-    return;
-  }
-
-  let found = false;
-  for (const key in permisos) {
-    if (permisos[key].Correo.toLowerCase() === correo) {
-      const pdfs = permisos[key].Permisos;
-      html += "<h3>Informes disponibles:</h3><ul>";
-      pdfs.forEach(link => {
-        html += `<li><a href="${link}" target="_blank">Descargar informe PDF</a></li>`;
+    if (usuario) {
+      // Genera los enlaces de descarga
+      let html = "<h2>Descargar informes</h2>";
+      usuario.PDF_SplitResultList.forEach((url, idx) => {
+        html += `<p><a href="${url}" target="_blank">Descargar informe #${idx + 1}</a></p>`;
       });
-      html += "</ul>";
-      found = true;
-      break;
+      document.body.innerHTML = html;
+    } else {
+      document.body.innerHTML = "<h2>No se encontró ningún informe para este correo.</h2>";
     }
-  }
-  if (!found) html = "<p>No hay informes asociados a ese correo.</p>";
-  document.getElementById('resultados').innerHTML = html;
-}
+  })
+  .catch(err => {
+    document.body.innerHTML = "<h2>Error cargando datos.</h2>";
+  });
