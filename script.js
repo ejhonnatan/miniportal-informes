@@ -1,25 +1,35 @@
-// Obtén el parámetro de correo de la URL
-const params = new URLSearchParams(window.location.search);
-const correo = params.get('correo');
+// script.js
 
-// Carga el JSON
+function getCorreoFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('correo') || '';
+}
+
 fetch('File_0.json')
-  .then(response => response.json())
+  .then(res => res.json())
   .then(data => {
-    // Busca el usuario por correo
-    const usuario = data.find(u => u.CORREO === correo);
+    const correo = getCorreoFromURL().toLowerCase();
+    const usuario = data.find(d => (d.CORREO || '').toLowerCase() === correo);
 
-    if (usuario) {
-      // Genera los enlaces de descarga
-      let html = "<h2>Descargar informes</h2>";
-      usuario.PDF_SplitResultList.forEach((url, idx) => {
-        html += `<p><a href="${url}" target="_blank">Descargar informe #${idx + 1}</a></p>`;
-      });
-      document.body.innerHTML = html;
-    } else {
-      document.body.innerHTML = "<h2>No se encontró ningún informe para este correo.</h2>";
+    const container = document.getElementById('botones-informes');
+    container.innerHTML = '';
+
+    if (!usuario || !usuario.PDF_SplitResultList || usuario.PDF_SplitResultList.length === 0) {
+      container.innerHTML = "<div style='color:#d74b4b; font-size:1.1em;'>No tienes informes para descargar</div>";
+      return;
     }
+
+    usuario.PDF_SplitResultList.forEach((url, idx) => {
+      const a = document.createElement('a');
+      a.className = "boton-informe";
+      a.href = url;
+      a.target = "_blank";
+      a.textContent = `Descargar informe #${idx + 1}`;
+      container.appendChild(a);
+      container.appendChild(document.createElement('br'));
+    });
   })
-  .catch(err => {
-    document.body.innerHTML = "<h2>Error cargando datos.</h2>";
+  .catch(() => {
+    document.getElementById('botones-informes').innerHTML = "<div style='color:#d74b4b;'>Error cargando datos</div>";
   });
+
