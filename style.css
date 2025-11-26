@@ -1,84 +1,83 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   min-height: 100vh;
-  min-width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(120deg, #f4f6fb 0%, #d7e1ec 100%);
-  color: #232b36;
-  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #e3ecf7 0%, #c9d6ff 100%);
+  font-family: 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
 }
 
-/* Contenedor general centrado */
 .centrado-total {
-  width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-/* Título grande centrado */
 .titulo-informes {
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: #215184;
-  margin-bottom: 42px;
-  margin-top: 0;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #243453;
+  margin-bottom: 2rem;
+  letter-spacing: .5px;
   text-align: center;
-  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px #fff7, 0 1px 0 #fff3;
+  background: rgba(255,255,255,0.15);
+  border-radius: 24px;
+  padding: 0.7em 2.2em;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, .12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* Contenedor de los botones, en columna */
 .botones-informes {
   display: flex;
   flex-direction: column;
-  gap: 22px;
   align-items: center;
+  gap: 1.2rem;
   width: 100%;
+  max-width: 420px;
 }
 
-/* Botón moderno */
-a.boton-informe {
-  display: inline-block;
-  padding: 16px 42px;
-  background: linear-gradient(90deg, #215184 0%, #40bfcf 100%);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
+.glass-btn {
+  background: rgba(255,255,255,0.22);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1.5px solid rgba(255,255,255,0.23);
+  color: #243453;
+  font-size: 1.2rem;
   font-weight: 600;
-  font-size: 1.11em;
-  border: none;
-  min-width: 280px;
-  box-shadow: 0 2px 8px 0 rgba(80,100,150,0.08);
-  transition: background 0.3s, box-shadow 0.3s, transform 0.13s;
+  padding: 0.9em 2.1em;
+  margin: 0 auto;
+  transition: 
+    background 0.3s cubic-bezier(.4,2,.3,1),
+    color 0.2s, 
+    box-shadow 0.3s;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
   text-align: center;
+  letter-spacing: .2px;
+  position: relative;
+  overflow: hidden;
 }
-a.boton-informe:hover, a.boton-informe:focus {
-  background: linear-gradient(90deg, #40bfcf 0%, #215184 100%);
-  box-shadow: 0 4px 18px 0 rgba(80,100,150,0.16);
-  transform: scale(1.04);
+.glass-btn:hover, .glass-btn:focus {
+  background: rgba(255,255,255,0.35);
+  color: #0d6efd;
+  box-shadow: 0 4px 32px 0 rgba(31, 38, 135, 0.20);
 }
-
-/* Responsive */
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .titulo-informes {
-    font-size: 1.2rem;
-    margin-bottom: 24px;
-  }
-  a.boton-informe {
-    min-width: 140px;
-    font-size: 1em;
-    padding: 13px 6vw;
+    font-size: 1.4rem;
+    padding: 0.6em 1em;
   }
   .botones-informes {
-    gap: 12px;
+    max-width: 95vw;
+    gap: .7rem;
+  }
+  .glass-btn {
+    font-size: 1rem;
+    padding: 0.7em 1em;
   }
 }
