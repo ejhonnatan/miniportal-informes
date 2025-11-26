@@ -32,4 +32,3 @@ fetch('File_0.json')
   .catch(() => {
     document.getElementById('botones-informes').innerHTML = "<div style='color:#d74b4b;'>Error cargando datos</div>";
   });
-
