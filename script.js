@@ -1,4 +1,3 @@
-// Obtiene el correo de la URL (?correo=ejhonnatan@hotmail.com)
 function getCorreoFromURL() {
   const params = new URLSearchParams(window.location.search);
   return params.get('correo') ? params.get('correo').trim().toLowerCase() : null;
@@ -6,7 +5,10 @@ function getCorreoFromURL() {
 
 fetch('File_0.json')
   .then(resp => resp.json())
-  .then(data => mostrarInformes(data));
+  .then(data => mostrarInformes(data))
+  .catch(() => {
+    document.getElementById('resultados').innerHTML = "<p>Error cargando datos.</p>";
+  });
 
 function mostrarInformes(permisos) {
   const correo = getCorreoFromURL();
@@ -20,9 +22,8 @@ function mostrarInformes(permisos) {
 
   let found = false;
   for (const key in permisos) {
-    // Cambia a .Correo o .CORREO según el nombre en tu JSON
     if (permisos[key].Correo.toLowerCase() === correo) {
-      const pdfs = permisos[key].PDF;  // Cambia a .PDF o .Permisos según el nombre en tu JSON
+      const pdfs = permisos[key].Permisos;
       html += "<h3>Informes disponibles:</h3><ul>";
       pdfs.forEach(link => {
         html += `<li><a href="${link}" target="_blank">Descargar informe PDF</a></li>`;
@@ -35,5 +36,3 @@ function mostrarInformes(permisos) {
   if (!found) html = "<p>No hay informes asociados a ese correo.</p>";
   document.getElementById('resultados').innerHTML = html;
 }
-
-
